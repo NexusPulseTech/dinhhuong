@@ -1,99 +1,49 @@
-name: Deploy to GitHub Pages & Production Release
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-    tags:
-      - 'v*'
+    branches: [main]
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages and creating Releases
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  # Quality Assurance & Build
-  build:
-    name: 🧪 Quality Verification & Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install Project Dependencies
-        run: npm install
-
-      - name: Run TypeScript & Linter Verification
-        run: npm run lint
-
-      - name: Build Production Distribution
-        run: npm run build
-
-      - name: Setup GitHub Pages Environment
-        uses: actions/configure-pages@v5
-
-      - name: Upload Production Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-  # Deployment to GitHub Pages
   deploy:
-    name: 🚀 Deploy to GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  # Automated Production Release on Tag or Main
-  release:
-    name: 📦 Generate Industrial Release & Tag
-    runs-on: ubuntu-latest
-    needs: deploy
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Create or Update GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v1.0.0
-          name: "Phiên Bản v1.0.0 - Cổng Định Hướng Nghề Nghiệp Quốc Gia"
-          body: |
-            ## 🚀 Hệ Thống Hướng Nghiệp & Tra Cứu Chuyên Ngành Đại Học (Bản Chuẩn Công Nghiệp)
-            
-            ### 🌟 Tính Năng Cốt Lõi:
-            - **23 Chuyên Ngành Trọng Điểm Quốc Gia**: Dữ liệu chuẩn hóa theo Bộ GD&ĐT (Điểm chuẩn 2024, học phí, 4 thang bậc lương, tác động của AI, bóc tách định kiến).
-            - **Thuật Toán Trắc Nghiệm Khoa Học**: Tính toán ma trận góc hướng RIASEC (Cosine Similarity) & 12 Chân dung nghề nghiệp độc quyền.
-            - **Ma Trận So Sánh Đối Kháng**: Đối chiếu trực diện 10 tiêu chí công việc giữa các ngành học.
-            - **Tối Ưu SEO & Schema.org**: Tích hợp dữ liệu có cấu trúc Google Indexing và OpenGraph tiếng Việt.
-            
-            ### 🌐 Đường Dẫn Truy Cập Chính Thức:
-            - **Live Demo**: [https://nexuspulsetech.github.io/dinhhuong](https://nexuspulsetech.github.io/dinhhuong)
-            - **Tổ chức bảo trợ**: NexusPulseTech Organization
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
