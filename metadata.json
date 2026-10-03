@@ -1,0 +1,6 @@
+{
+  "name": "DinhHuong.vn - La Bàn Hướng Nghiệp Lớp 12 & Khối D01",
+  "description": "Nghiên cứu & ứng dụng hướng nghiệp chuyên sâu cho học sinh lớp 12, trắc nghiệm Holland RIASEC, phân tích chuyên sâu khối D01 và so sánh ngành nghề thực chiến.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
