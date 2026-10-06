@@ -45,7 +45,7 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({ onSelectMajo
     },
     {
       label: '4. Lương mới tốt nghiệp (0–2 năm)',
-      desc: 'Khảo sát TopCV & Navigos 2024–2025',
+      desc: 'Khảo sát TopCV & Navigos 2025–2026',
       getValue: (m: Major) => m.salaryBands.freshGrad,
       highlight: true
     },

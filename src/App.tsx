@@ -12,6 +12,7 @@ import { ResearchDocView } from './components/ResearchDocView';
 import { UserAssessmentState } from './types';
 import { useTheme } from './hooks/useTheme';
 import { Compass, Mail, Linkedin } from 'lucide-react';
+import { applyEvergreenSEO } from './utils/seo';
 
 const LOCAL_STORAGE_KEY = 'nexuspulse_user_profile_v3';
 
@@ -43,6 +44,11 @@ export default function App() {
     }
     return DEFAULT_USER_STATE;
   });
+
+  // Evergreen SEO: Tự động cập nhật tiêu đề, chu kỳ tuyển sinh và schema theo thời gian thực
+  useEffect(() => {
+    applyEvergreenSEO();
+  }, []);
 
   useEffect(() => {
     try {

@@ -69,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               })}
             </nav>
 
-            {/* Theme Toggle */}
+            {/* Right Tools: Theme Toggle Button */}
             <div className="flex items-center gap-2">
               <button
                 onClick={onToggleTheme}

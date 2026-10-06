@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#0f2b48"/>
+      <stop offset="100%" stop-color="#0071e3"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+  </g>
+
+  <!-- Compass / Logo Icon -->
+  <g transform="translate(100, 100)">
+    <rect width="84" height="84" rx="20" fill="#0071e3" filter="drop-shadow(0 10px 20px rgba(0,113,227,0.4))"/>
+    <circle cx="42" cy="42" r="26" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <polygon points="42,24 50,42 42,40 34,42" fill="#ffffff"/>
+    <polygon points="42,60 50,42 42,44 34,42" fill="#38bdf8"/>
+  </g>
+
+  <!-- Brand badge -->
+  <rect x="204" y="118" width="240" height="46" rx="23" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)"/>
+  <text x="324" y="147" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">NexusPulseTech • 2026</text>
+
+  <!-- Main Headline -->
+  <text x="100" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" fill="#ffffff" letter-spacing="-1">
+    CỔNG ĐỊNH HƯỚNG TUYỂN SINH
+  </text>
+  <text x="100" y="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="url(#glow)" letter-spacing="-1">
+    &amp; NGHỀ NGHIỆP QUỐC GIA 2026
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="415" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="500" fill="#cbd5e1">
+    Tra cứu 23+ Ngành Đại Học • Trắc Nghiệm Holland RIASEC • Điểm Chuẩn &amp; Học Phí 3 Miền
+  </text>
+
+  <!-- Feature Tags -->
+  <g transform="translate(100, 480)">
+    <rect x="0" y="0" width="230" height="52" rx="14" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+    <text x="115" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">🎯 Tuyển Sinh 2026</text>
+
+    <rect x="250" y="0" width="230" height="52" rx="14" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+    <text x="365" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">⚡ Trắc Nghiệm RIASEC</text>
+
+    <rect x="500" y="0" width="230" height="52" rx="14" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+    <text x="615" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">📊 Ma Trận So Sánh Lương</text>
+
+    <rect x="750" y="0" width="230" height="52" rx="14" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+    <text x="865" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">💡 AI Mentor Cố Vấn 1-1</text>
+  </g>
+</svg>

@@ -2,7 +2,7 @@ export const RESEARCH_AND_DESIGN_REPORT = {
   title: "BÁO CÁO NGHIÊN CỨU KHOA HỌC & ĐẶC TẢ HƯỚNG NGHIỆP ĐẠI HỌC TOÀN QUỐC",
   author: "Lead Product Analyst & Staff Software Engineer (10+ năm kinh nghiệm EdTech)",
   version: "2.0.0 (Nationwide Comprehensive Edition)",
-  date: "Cập nhật Tuyển sinh & Thị trường 2025 – 2026",
+  date: "Cập nhật Tuyển sinh & Thị trường 2026 – 2027",
   abstract: "Tài liệu nghiên cứu cơ sở lý luận khoa học và dữ liệu thực chứng phục vụ hướng nghiệp cho học sinh THPT toàn quốc. Báo cáo đối chiếu mô hình nhân cách - môi trường nghề nghiệp John Holland (RIASEC) với Danh mục mã ngành đào tạo cấp IV của Bộ GD&ĐT Việt Nam, kết hợp khảo sát lương và nhu cầu việc làm từ Navigos Group, TopCV và các trường đại học hàng đầu 3 miền Bắc – Trung – Nam.",
 
   partA: {
@@ -20,7 +20,7 @@ export const RESEARCH_AND_DESIGN_REPORT = {
       ]
     },
     section2: {
-      title: "2. Bản đồ Tuyển sinh & Điểm chuẩn 3 miền (Nguồn Bộ GD&ĐT 2024–2025)",
+      title: "2. Bản đồ Tuyển sinh & Điểm chuẩn 3 miền (Nguồn Bộ GD&ĐT 2025–2026)",
       d01Focus: "Hệ sinh thái tuyển sinh đại học Việt Nam phân hóa theo các khối thi chiến lược: A00, A01 (Kỹ thuật & Công nghệ), B00 (Khoa học Sức khỏe), D01, D07 (Kinh tế, Truyền thông & Dịch vụ), C00 (Khoa học Xã hội & Luật).",
       regions: [
         {
@@ -41,7 +41,7 @@ export const RESEARCH_AND_DESIGN_REPORT = {
       ]
     },
     section3: {
-      title: "3. Khảo sát Lương & Tác động của AI (Nguồn Navigos Group & TopCV 2024–2025)",
+      title: "3. Khảo sát Lương & Tác động của AI (Nguồn Navigos Group & TopCV 2025–2026)",
       salaryInsights: [
         "Nhóm ngành Công nghệ thông tin & AI: Mức lương khởi điểm cao nhất (12–25 triệu VNĐ/tháng), cơ hội nhận lương ngoại tệ USD từ dự án nước ngoài.",
         "Nhóm ngành Kinh tế & Marketing: Thu nhập khởi điểm trung bình (10–16 triệu VNĐ), nhưng mức trần thu nhập sau 5 năm bứt phá nhanh nhất nhờ hoa hồng kinh doanh và vị trí quản lý (50–100+ triệu).",

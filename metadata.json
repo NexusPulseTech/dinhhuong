@@ -1,6 +1,6 @@
 {
-  "name": "DinhHuong.vn - La Bàn Hướng Nghiệp Lớp 12 & Khối D01",
-  "description": "Nghiên cứu & ứng dụng hướng nghiệp chuyên sâu cho học sinh lớp 12, trắc nghiệm Holland RIASEC, phân tích chuyên sâu khối D01 và so sánh ngành nghề thực chiến.",
+  "name": "Định Hướng Tuyển Sinh & Nghề Nghiệp Đại Học 2026 | NexusPulse",
+  "description": "Cổng định hướng tuyển sinh & hướng nghiệp đại học toàn quốc năm 2026. Tra cứu 23+ ngành học, trắc nghiệm Holland RIASEC, điểm chuẩn 2025-2026, học phí và lộ trình việc làm khối D01, A00, A01.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
