@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Navbar, TabType } from './components/Navbar';
+import { Navbar } from './components/Navbar';
 import { MentorChat } from './components/MentorChat';
 import { MajorExplorer } from './components/MajorExplorer';
 import { ComparisonMatrix } from './components/ComparisonMatrix';
@@ -12,7 +12,7 @@ import { ResearchDocView } from './components/ResearchDocView';
 import { UserAssessmentState } from './types';
 import { useTheme } from './hooks/useTheme';
 import { Compass, Mail, Linkedin } from 'lucide-react';
-import { applyEvergreenSEO } from './utils/seo';
+import { useHashRouter } from './router/useHashRouter';
 
 const LOCAL_STORAGE_KEY = 'nexuspulse_user_profile_v3';
 
@@ -30,8 +30,7 @@ const DEFAULT_USER_STATE: UserAssessmentState = {
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
-  const [activeTab, setActiveTab] = useState<TabType>('explorer');
-  const [selectedMajorForModal, setSelectedMajorForModal] = useState<string | null>(null);
+  const { tab: activeTab, majorId: selectedMajorForModal, navigate } = useHashRouter();
 
   const [userState, setUserState] = useState<UserAssessmentState>(() => {
     try {
@@ -44,11 +43,6 @@ export default function App() {
     }
     return DEFAULT_USER_STATE;
   });
-
-  // Evergreen SEO: Tự động cập nhật tiêu đề, chu kỳ tuyển sinh và schema theo thời gian thực
-  useEffect(() => {
-    applyEvergreenSEO();
-  }, []);
 
   useEffect(() => {
     try {
@@ -69,10 +63,7 @@ export default function App() {
   };
 
   const handleSelectMajorFromAnywhere = (majorId: string | null) => {
-    setSelectedMajorForModal(majorId);
-    if (majorId) {
-      setActiveTab('explorer');
-    }
+    navigate('explorer', majorId);
   };
 
   return (
@@ -80,7 +71,7 @@ export default function App() {
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={newTab => navigate(newTab, null)}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
@@ -90,10 +81,10 @@ export default function App() {
         {activeTab === 'explorer' && (
           <MajorExplorer
             selectedMajorId={selectedMajorForModal}
-            onSelectMajor={setSelectedMajorForModal}
+            onSelectMajor={id => navigate('explorer', id)}
             savedMajorIds={userState.savedMajorIds}
             onToggleSaveMajor={handleToggleSaveMajor}
-            onCompareWith={() => setActiveTab('comparison')}
+            onCompareWith={() => navigate('comparison', null)}
           />
         )}
 
@@ -102,14 +93,14 @@ export default function App() {
             userState={userState}
             setUserState={setUserState}
             onSelectMajor={handleSelectMajorFromAnywhere}
-            onNavigateToCompare={() => setActiveTab('comparison')}
+            onNavigateToCompare={() => navigate('comparison', null)}
           />
         )}
 
         {activeTab === 'comparison' && (
           <ComparisonMatrix
             onSelectMajor={handleSelectMajorFromAnywhere}
-            onNavigateToExplorer={() => setActiveTab('explorer')}
+            onNavigateToExplorer={() => navigate('explorer', null)}
           />
         )}
 
@@ -138,17 +129,18 @@ export default function App() {
               title="Gửi email liên hệ"
             >
               <Mail className="w-3.5 h-3.5 text-[#0071e3]" strokeWidth={1.75} />
-              <span className="font-medium">nguyenhoangphuc7077@gmail.com</span>
+              <span>nguyenhoangphuc7077@gmail.com</span>
             </a>
+
             <a
-              href="https://www.linkedin.com/in/william-nguyen-arch"
+              href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-[#0071e3] dark:hover:text-[#0071e3] transition-colors bg-slate-100 dark:bg-slate-800/60 px-2.5 py-1 rounded-full border border-slate-200/60 dark:border-slate-700/60"
-              title="LinkedIn Profile"
+              title="Trang LinkedIn"
             >
               <Linkedin className="w-3.5 h-3.5 text-[#0071e3]" strokeWidth={1.75} />
-              <span className="font-medium">William Nguyen</span>
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>

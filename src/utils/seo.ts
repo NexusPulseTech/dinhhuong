@@ -5,6 +5,8 @@
  * tự động chuyển năm (2026 -> 2027 -> 2028...) mà không cần sửa code thủ công.
  */
 
+import { Major } from '../types';
+
 export interface AdmissionsCycle {
   currentYear: number;
   admissionsYear: number;
@@ -85,4 +87,66 @@ export function applyEvergreenSEO(): AdmissionsCycle {
   }
 
   return cycle;
+}
+
+/**
+ * Cập nhật SEO chi tiết khi người dùng xem một chuyên ngành cụ thể (Deep-link SEO)
+ */
+export function applyMajorDetailSEO(major: Major) {
+  const cycle = getAdmissionsCycle();
+  if (typeof document === 'undefined') return;
+
+  const title = `Ngành ${major.name} (Mã ${major.code}): Điểm Chuẩn, Học Phí & Lương | NexusPulse`;
+  const desc = `Thông tin tuyển sinh năm ${cycle.admissionsYear} ngành ${major.name}. Khối thi ${major.admissionBlocks.join(', ')}, lương mới ra trường ${major.salaryBands.freshGrad}, các trường đào tạo hàng đầu 3 miền và tác động AI.`;
+
+  document.title = title;
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', desc);
+
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', title);
+
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', desc);
+
+  // Thêm hoặc cập nhật BreadcrumbList Schema.org
+  try {
+    let breadcrumbScript = document.getElementById('schema-breadcrumb');
+    if (!breadcrumbScript) {
+      breadcrumbScript = document.createElement('script');
+      breadcrumbScript.id = 'schema-breadcrumb';
+      breadcrumbScript.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(breadcrumbScript);
+    }
+
+    const breadcrumbData = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: 'https://dinhhuong.nexuspulsetech.xyz/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Khám phá chuyên ngành',
+          item: 'https://dinhhuong.nexuspulsetech.xyz/#/kham-pha',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: major.name,
+          item: `https://dinhhuong.nexuspulsetech.xyz/#/nganh/${major.id}`,
+        },
+      ],
+    };
+
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbData, null, 2);
+  } catch (e) {
+    console.debug('Breadcrumb schema error:', e);
+  }
 }
